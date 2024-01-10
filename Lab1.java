@@ -10,6 +10,8 @@ import java.util.*;
 public class Lab1 {
     //This constant dictates random number generation range for game
     public static final int RANGE_MAX = 100;
+    public static final int MAX_GUESSES = 9999; 
+    // bestGuess = MAX_GUESSES and then will call bestGame method after each game
 
     //introduces the game. calls game method.
     public static void main(String[] args) {
@@ -51,7 +53,7 @@ public class Lab1 {
                     }
                     System.out.println("You got it right in " + guessCount + "guesses");
                 }
-                guessCountTotal = guessCountTotal + guessCount;
+                guessCountTotal += guessCount;
                 gameCount++;
                 response = gameStatusCheck(console);
             }
@@ -59,9 +61,24 @@ public class Lab1 {
         results(guessCount, guessCountTotal, gameCount);
     }
 
-    //This method analyzes game statistics and displays to user
-    public static void results(int guessCount, int guessCountTotal, int gameCount){
+    // compares number of guesses from one game to the "best" guess
+    // reassigns value of bestGuess and returns
+    public static int bestGame(int guessCount, int bestGuess) {
+        if (guessCount <= bestGuess) {
+            return guessCount;
+        } else {
+            return bestGuess;
+        }
+    }
 
+    //This method analyzes game statistics, calculates average, and displays to user
+    public static void results(int bestGuess, int guessCountTotal, int gameCount){ // changed first param
+            double average = (guessCountTotal / gameCount);
+            System.out.println("Overall results:");
+            System.out.printf("\t%-13s = %d%n", "total games", gameCount);
+            System.out.printf("\t%-13s = %d%n", "total guesses", guessCountTotal);
+            System.out.printf("\t%-13s = %.1f%n", "guesses/game", average);
+            System.out.printf("\t%-13s = %d%n", "best game", bestGuess);
     }
 
     //takes in user input from game, while command checks if input is an int
