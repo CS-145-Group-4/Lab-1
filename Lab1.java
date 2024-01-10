@@ -7,7 +7,7 @@
 import java.util.*;
 
 //this program runs a command line based number guessing game
-public class Lab1 {
+public class GuessingGame {
 
     //This constant dictates random number generation range for game
     public static final int RANGE_MAX = 100;
