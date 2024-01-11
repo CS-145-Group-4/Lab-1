@@ -53,7 +53,7 @@ public class GuessingGame {
         int userInput = 0;
         int guessCount = 0;
         Random rand = new Random();
-        int generatedNumber = rand.nextInt(RANGE_MAX);
+        int generatedNumber = rand.nextInt(RANGE_MAX) + 1;
         System.out.println("I'm thinking of a number between " +
                 "1 and " + RANGE_MAX + "...");
         while (userInput != generatedNumber) {
